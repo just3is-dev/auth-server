@@ -9,11 +9,14 @@ import {
   UsePipes,
   ValidationPipe,
 } from '@nestjs/common';
+import { ApiExcludeController, ApiTags } from '@nestjs/swagger';
 
 import { AccessTokenGuard } from '../auth/guards/access-token.guard';
 import { CreateUserDto } from './dtos/create-user.dto';
 import { UsersService } from './users.service';
 
+@ApiTags('users')
+@ApiExcludeController()
 @UseGuards(AccessTokenGuard)
 @Controller('users')
 export class UsersController {
